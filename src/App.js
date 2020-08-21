@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 // 펑션 대신 클래스로 앱 구현
 class App extends React.Component {
@@ -20,10 +21,15 @@ class App extends React.Component {
   //   this.setState((current) => ({ count: current.count - 1 }));
   // };
 
+  getMovies = async () => {
+    const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+  };
+
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 3000);
+    // setTimeout(() => {
+    //   this.setState({ isLoading: false });
+    // }, 3000);
+    this.getMovies();
   }
 
   // componentDidUpdate() {
